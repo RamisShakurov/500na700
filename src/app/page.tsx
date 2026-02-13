@@ -1,6 +1,9 @@
 import styles from "@/app/page.module.css";
 import Article from "@/components/Article/Article";
+import { getNewsData } from './api/news/route';
+
 export const dynamic = 'force-dynamic'
+
 export type TArticle = {
     id: number;
     image: string;
@@ -10,9 +13,7 @@ export type TArticle = {
 };
 
 export default async function Home() {
-    setTimeout(()=> new Promise(resolve => (5000)))
-    const response = await fetch("/api/news");
-    const data = await response.json();
+    const data = getNewsData();
 
     return (
         <main className={styles.main}>
