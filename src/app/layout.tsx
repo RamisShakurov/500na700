@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header/Header";
+import styles from './page.module.css'
+import clsx from "clsx";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+    variable: "--font-inter-sans",
+    subsets: ["latin", "cyrillic"],
+    weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -24,9 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <body className={clsx(inter.variable, styles.body)}>
+        <Header/>
         {children}
-      </body>
+    </body>
     </html>
   );
 }
