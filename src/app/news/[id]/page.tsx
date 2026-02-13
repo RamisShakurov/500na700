@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {notFound} from 'next/navigation';
 import styles from './new.module.scss'
+import { getNewsData } from '@/app/api/news/route'; // Импортируем функцию
 
 type NewsItem = {
     id: number;
@@ -10,15 +11,10 @@ type NewsItem = {
     date: string;
 };
 
-async function getNewsById(id: string): Promise<NewsItem | null> {
+function getNewsById(id: string): NewsItem | null {
     try {
-        const response = await fetch('/api/news', {
-            cache: 'no-store',
-        });
-
-        const data = await response.json();
+        const data = getNewsData();
         const news = data.news.find((item: NewsItem) => item.id === Number(id));
-
         return news || null;
     } catch (error) {
         console.error('Error:', error);
@@ -32,7 +28,7 @@ export default async function NewsDetail({
     params: Promise<{ id: string }>
 }) {
     const {id} = await params;
-    const news = await getNewsById(id);
+    const news = getNewsById(id);
 
     if (!news) {
         notFound();
@@ -52,9 +48,9 @@ export default async function NewsDetail({
                             unoptimized
                         />
                         <div className={styles.articleBody}>
-                    <span className={styles.date}>
-                        {news.date}
-                    </span>
+                            <span className={styles.date}>
+                                {news.date}
+                            </span>
                             <h2 className={styles.title}>
                                 {news.title}
                             </h2>
@@ -63,7 +59,6 @@ export default async function NewsDetail({
                             </p>
                         </div>
                     </div>
-
                 </article>
             </section>
             <footer className={styles.footerWrapper}>
@@ -83,6 +78,5 @@ export default async function NewsDetail({
                 </div>
             </footer>
         </>
-
     );
 }
