@@ -27,7 +27,7 @@ export default async function NewsDetail({
                                          }: {
     params: Promise<{ id: string }>
 }) {
-    const {id} = await params;
+     const {id} = await params;
     const news = getNewsById(id);
 
     if (!news) {
