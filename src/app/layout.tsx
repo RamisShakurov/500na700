@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import styles from './page.module.css'
 import clsx from "clsx";
+import {Analytics} from '@vercel/analytics/next';
 
 const inter = Inter({
     variable: "--font-inter-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
     <body className={clsx(inter.variable, styles.body)}>
         <Header/>
         {children}
+        <Analytics />
     </body>
     </html>
   );
