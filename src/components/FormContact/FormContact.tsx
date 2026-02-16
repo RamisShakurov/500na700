@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import {useState} from 'react'
 import styles from './FormContact.module.scss'
 
 type ContactFormData = {
@@ -22,7 +22,7 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
         agree: false
     })
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         if (onSubmit) {
@@ -70,21 +70,19 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                     onChange={handleChange}
                 />
             </div>
-            <label className={styles.checkbox}>
-                <input
-                    type="checkbox"
-                    required
-                    name="agree"
-                    checked={formData.agree}
-                    onChange={handleChange}
-                />
-                <span>
-                    Я согласен(-а) на обработку персональных данных
-                </span>
-            </label>
-            <button type="submit" className={styles.button}>
-                Отправить
-            </button>
+          <label className={styles.checkboxWrapper}> <input
+            className={styles.checkbox}
+            type="checkbox"
+            required
+            name="agree"
+            checked={formData.agree}
+            onChange={handleChange}
+          />
+            <span>Я согласен(-а) на обработку персональных данных</span>
+          </label>
+          <button type="submit" className={styles.button}>
+            Отправить
+          </button>
         </form>
     )
 }
