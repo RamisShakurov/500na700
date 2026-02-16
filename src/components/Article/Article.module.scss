@@ -7,9 +7,6 @@
 }
 
 
-.article:hover .image {
-  border-radius: 20px;
-}
 
 .title {
   font-weight: 600;
@@ -59,10 +56,14 @@
   max-height: 300px;
   min-height: 280px;
   max-width: 440px;
-  display: block;
   border-radius: 0;
   transition: border-radius 0.3s ease;
 }
+
+.article:hover .image {
+  border-radius: 20px;
+}
+
 
 @media (width <= 440px) {
   .wrapper, .date {

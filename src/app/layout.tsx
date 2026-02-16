@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import styles from './page.module.css'
 import clsx from "clsx";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({
     variable: "--font-inter-sans",
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
-        <link rel="icon"
+      <link rel="icon"
               href="/favicon.ico"
               type="image/x-icon"/>
     </head>

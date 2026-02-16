@@ -2,6 +2,14 @@
   height: 100%;
   padding-inline-start: 40px;
   padding-block-start: 78px;
+  flex: 1;
+  padding-block-end: 80px;
+}
+
+.page {
+  min-height: 87vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .footerWrapper {
